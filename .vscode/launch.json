@@ -1,0 +1,20 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+  {
+    "name":         "Launch Program",
+    "type":         "cppvsdbg",
+    "request":      "launch",
+    "args":         [],
+    "stopAtEntry":  false,
+    "windows": {
+      "cwd":        "${workspaceFolder}/build/debug",
+      "program":    "${workspaceFolder}/build/debug/app_template.exe",
+    },
+    "linux": {
+      "cwd":        "${workspaceFolder}/build",
+      "program":    "${workspaceFolder}/build/app_template",
+    },
+  }
+  ]
+}
