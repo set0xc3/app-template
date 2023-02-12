@@ -21,6 +21,5 @@ echo "=============================="
 mkdir %BUILD_PATH%
 pushd %BUILD_PATH%
     cmake .. -DCMAKE_INSTALL_PREFIX=%BIN_PATH% -DCMAKE_BUILD_TYPE=%BUILD_TYPE% -S%ROOT_DIR% -B%BUILD_PATH%
-    cmake --build .
-    cmake --install . --config %BUILD_TYPE%
+    cmake --build . --config %BUILD_TYPE%
 popd

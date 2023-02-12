@@ -14,7 +14,7 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
   message("Setting build type to 'Debug' as none was specified.")
 
   set(CMAKE_BUILD_TYPE Debug)
-  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release" "MinSizeRel" "RelWithDebInfo")
+  set_property(CACHE CMAKE_BUILD_TYPE PROPERTY STRINGS "Debug" "Release")
 endif()
 
 # ==============================================================================
@@ -41,6 +41,11 @@ add_executable(${TARGET} ${HEADERS} ${SOURCES})
 
 target_include_directories(${TARGET} PRIVATE 
     ${PROJECT_SOURCE_DIR}/external/glad/include
+    ${PROJECT_SOURCE_DIR}/external/SDL2-2.26.3/include
+)
+
+target_link_directories(${TARGET} PRIVATE 
+    ${PROJECT_SOURCE_DIR}/external/SDL2-2.26.3/lib/x64
 )
 
 # ==============================================================================
@@ -55,15 +60,11 @@ set_target_properties(${TARGET} PROPERTIES C_EXTENSIONS OFF)
 # ==============================================================================
 
 if(MSVC)
-    target_compile_options(${TARGET} PRIVATE /W4 /D_CRT_SECURE_NO_WARNINGS)
+    target_compile_options(${TARGET} PRIVATE /W3 /D_CRT_SECURE_NO_WARNINGS)
     target_compile_options(${TARGET} PRIVATE /fp:fast)
 else()
     target_compile_options(${TARGET} PRIVATE -Wall -Wextra -pedantic)
     target_compile_options(${TARGET} PRIVATE -ffast-math)
-endif()
-
-if(UNIX AND NOT APPLE)
-    target_compile_options(${TARGET} PRIVATE -D_POSIX_C_SOURCE=200809L)
 endif()
 
 # ==============================================================================
@@ -71,7 +72,7 @@ endif()
 # ==============================================================================
 
 if(WIN32)
-    target_link_libraries(${TARGET} PRIVATE )
+    target_link_libraries(${TARGET} PRIVATE SDL2 SDL2main)
 elseif(LINUX)
     target_link_libraries(${TARGET} PRIVATE )
 endif()
