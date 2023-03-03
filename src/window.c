@@ -47,7 +47,7 @@ internal void window_poll_events(Window* window)
 						event = malloc(sizeof(*event));
 						event->type = CORE_EVENT_WINDOW;
 
-						event->window.id = raw_event.window.windowID;
+						//event->window.id = raw_event.window.windowID;
 						event->window.type = CORE_EVENT_WINDOW_CLOSE;
 					} break;
 				}

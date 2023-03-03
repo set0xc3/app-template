@@ -1,32 +1,36 @@
 #if !defined(EVENT_H)
 #define EVENT_H
 
-typedef enum 
+typedef enum EventType EventType;
+enum EventType
 {
 	CORE_EVENT_NONE,
 	CORE_EVENT_QUIT,
 	CORE_EVENT_WINDOW
-} EventType;
+};
 
-typedef enum
+typedef enum WindowEventType WindowEventType;
+enum WindowEventType
 {
 	CORE_EVENT_WINDOW_NONE,
 	CORE_EVENT_WINDOW_CLOSE
-} WindowEventType;
+};
 
-typedef struct
+typedef struct WindowEvent WindowEvent;
+struct WindowEvent
 {
 	u32 type;
-	u32 id;
 	u32 width, height;
 	u32 xpos, ypos;
 	void *handle;
-} WindowEvent;
+};
 
-typedef struct
+typedef struct Event Event;
+struct Event
 {
+	u32 id;
 	u32 type;
 	WindowEvent window;
-} Event;
+};
 
 #endif
