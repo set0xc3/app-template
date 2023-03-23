@@ -40,12 +40,12 @@ add_executable(${TARGET} ${HEADERS} ${SOURCES})
 # ==============================================================================
 
 target_include_directories(${TARGET} PRIVATE 
-    ${PROJECT_SOURCE_DIR}/external/glad/include
-    ${PROJECT_SOURCE_DIR}/external/SDL2-2.26.3/include
+    ${PROJECT_SOURCE_DIR}/vendor/glad/include
+    ${PROJECT_SOURCE_DIR}/vendor/SDL2-2.26.3/include
 )
 
 target_link_directories(${TARGET} PRIVATE 
-    ${PROJECT_SOURCE_DIR}/external/SDL2-2.26.3/lib/x64
+    ${PROJECT_SOURCE_DIR}/vendor/SDL2-2.26.3/lib/x64
 )
 
 # ==============================================================================
